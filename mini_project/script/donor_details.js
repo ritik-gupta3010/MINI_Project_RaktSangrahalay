@@ -13,17 +13,19 @@ function readFom() {
   emailV=document.getElementById("email").value;
   
  
-  console.log( nameV, ageV,addressV, districtSelV,phoneV,diseaseV,bloodgV,emailV);
+  console.log("after reading data", nameV, ageV,addressV, districtSelV,phoneV,diseaseV,bloodgV,emailV);
 }
 
 document.getElementById("read").onclick = function () {
 
     readFom();
-  
+  console.log("after reading data in read", nameV, ageV,addressV, districtSelV,phoneV,diseaseV,bloodgV,emailV);
     firebase
       .database()
       .ref("blooddonordetails/" + nameV)
       .on("value", function (snap) {
+        console.log("snap",snap);
+        console.log("nameV",nameV);
         document.getElementById("name").value = snap.val().name;
         document.getElementById("districtSel").value = snap.val().districtSel;
         document.getElementById("phone").value = snap.val().phone;
